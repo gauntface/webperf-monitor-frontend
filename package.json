@@ -1,0 +1,10 @@
+{
+  "name": "webperf-monitor-frontend",
+  "description": "Frontend for the webperf-monitor backend",
+  "version": "0.0.1",
+  "dependencies": {
+    "express": "3.x",
+    "mysql": "~2.0.x",
+    "when": "~3.3.1"
+  }
+}
