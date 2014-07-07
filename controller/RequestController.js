@@ -19,37 +19,20 @@ exports.getIndexRequest = function(req, res) {
 	  					return;
 					}
 
-					var html = '';
-					html += '<h1>Top Pages</h1>';
-					html += '<table>';
-					for(var i = 0; i < topPagesResults.length; i++) {
-						html += '<tr>';
-						html += '<td>';
-						html += topPagesResults[i].url;
-						html += '</td>';
-						html += '<td>';
-						html += topPagesResults[i].score;
-						html += '</td>';
-						html += '</tr>';
-					}
-					html += '</table>';
+					getPreviousScoreAverages(function(err, scoreAverages) {
+						if(err) {
+							console.error(err);
+	  						res.send(500, 'Something broke! '+err);
+	  						return;
+						}
 
-
-					html += '<h1>Worst Pages</h1>';
-					html += '<table>';
-					for(var i = 0; i < worstPagesResults.length; i++) {
-						html += '<tr>';
-						html += '<td>';
-						html += worstPagesResults[i].url;
-						html += '</td>';
-						html += '<td>';
-						html += worstPagesResults[i].score;
-						html += '</td>';
-						html += '</tr>';
-					}
-					html += '</table>';
-
-					res.send(html);
+						res.render('home', {
+							topSites: topPagesResults,
+							worstSites: worstPagesResults,
+							scoreAverages: scoreAverages
+						});
+						//res.send(html);
+					});
 				});
 			});
 		})
@@ -81,6 +64,20 @@ function getWorstResultsForRun(runId, numOfResults, cb) {
 
 	numOfResults = numOfResults || 10;
 	RunsModel.getWorstResultsForRun(runId, numOfResults)
+		.then(function(result) {
+			cb(null, result);
+		})
+		.catch(function(err) {
+			cb(err);
+		});
+}
+
+function getPreviousScoreAverages(cb) {
+	if(!cb) {
+		return;
+	}
+	numberOfDays = 30 * 3;
+	RunsModel.getPreviousScoreAverages(numberOfDays)
 		.then(function(result) {
 			cb(null, result);
 		})
