@@ -1,7 +1,7 @@
 var mysql = require('mysql');
-var config = require('./../config/config.js');
 
 exports.openDb = function(cb) {
+    var config = require(GLOBAL.configFile);
     if(config == null) {
         cb('No Config Available to load the database');
         return;
