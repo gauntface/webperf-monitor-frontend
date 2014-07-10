@@ -1,0 +1,77 @@
+<section class="container">
+	<div class="g--half">
+		<h2>Top Pages</h2>
+
+		<div class="table-wrap">
+			<table class="table-2 url-score-table">
+				<thead>
+					<tr>
+						<th>URL</th>
+						<th>Score</th>
+					</tr>
+				</thead>
+				
+				<tbody>
+				{{#each topSites}}
+				<tr>
+			    	<td data-th="URL">{{this.url}} </td>
+			    	<td data-th="Score">{{this.score}}</td>
+			    </tr>
+				{{/each}}
+				</tbody>
+				
+			</table>
+		</div>
+	</div>
+
+	<div class="g--half g--last">
+		<h2>Worst Pages</h2>
+
+		<div class="table-wrap">
+			<table class="table-2 url-score-table">
+				<thead>
+					<tr>
+						<th>URL</th>
+						<th>Score</th>
+					</tr>
+				</thead>
+
+				<tbody>
+				{{#each worstSites}}
+				<tr>
+			    	<td data-th="URL">{{this.url}} </td>
+			    	<td data-th="Score">{{this.score}}</td>
+			    </tr>
+				{{/each}}
+				</tbody>
+				
+			</table>
+		</div>
+	</div>
+
+	<div class="clear"></div>
+
+	<h2>Run Score Averages</h2>
+
+	<div class="table-wrap">
+		<table class="table-3">
+			<thead>
+				<tr>
+					<th>End Time</th>
+					<th>Mean Score</th>
+					<th>Median Score</th>
+				</tr>
+			</thead>
+
+			<tbody>
+			{{#each scoreAverages}}
+			<tr>
+				<td data-th="End Time">{{this.end_time}}</td>
+		    	<td data-th="Mean">{{this.mean_score}} </td>
+		    	<td data-th="Median">{{this.median_score}}</td>
+		    </tr>
+			{{/each}}
+			
+		</table>
+	</div>
+</section>
