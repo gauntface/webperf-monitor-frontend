@@ -1,0 +1,25 @@
+@import "./../styleguide/styles/_colors";
+@import "./../styleguide/styles/_dimens";
+@import "./../styleguide/styles/_mediaqueries";
+@import "./../styleguide/styles/_typography";
+@import "./../styleguide/styles/_grid";
+@import "./../styleguide/styles/_base";
+@import "./../styleguide/styles/_table";
+@import "./../styleguide/styles/_helper";
+
+@import "./../styleguide/styles/modules/_containers";
+
+@import "./../styleguide/styles/modules/_footer";
+
+@include mq-small-only {
+	table.url-score-table td {
+		word-break: break-all;
+	}
+}
+
+@include mq-medium {
+	table.url-score-table td {
+		height: 160px;
+		word-break: break-all;
+	}
+}

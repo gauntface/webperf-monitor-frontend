@@ -27,6 +27,7 @@ exports.getIndexRequest = function(req, res) {
 						}
 
 						res.render('home', {
+							cssfile: 'styles/home.css',
 							topSites: topPagesResults,
 							worstSites: worstPagesResults,
 							scoreAverages: scoreAverages
