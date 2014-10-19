@@ -21,7 +21,7 @@ function startServer () {
 
   app.get('/', RequestController.getIndexRequest);
   app.get('/settings', RequestController.getSettingsRequest);
-  app.post('/settings/submit', RequestController.getSettingsSubmitRequest);
+  app.post('/settings/save', RequestController.getSettingsSubmitRequest);
 
   app.use('/styles', express.static(__dirname + '/dist/styles'));
   app.use('/scripts', express.static(__dirname + '/dist/scripts'));

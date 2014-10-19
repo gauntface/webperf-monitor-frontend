@@ -86,8 +86,8 @@ exports.getSettingsRequest = function(req, res, isIndexPage) {
     databaseUsername: settings.databaseUsername || '',
     databasePassword: settings.databasePassword || '',
     databaseName: settings.databaseName || DEFAULT_DB_NAME,
-    sitemapUrl: settings.databasePortNum || '',
-    webpagetestAPIKey: settings.databasePortNum || ''
+    sitemapUrl: settings.sitemapUrl || '',
+    webpagetestAPIKey: settings.webpagetestAPIKey || ''
   });
 };
 
@@ -117,29 +117,33 @@ exports.getSettingsSubmitRequest = function(req, res) {
 };
 
 function validateFormResults(params) {
-  var fieldErrors = {};
+  var fieldErrors = [];
   if (!isValidFormTest(params.databaseHostname)) {
-    fieldErrors.databaseHostname = {
+    fieldErrors.push({
+      errorKey: 'databaseHostname',
       errorMsg: 'You need to supply a Database hostname'
-    };
+    });
   }
 
   if (!isValidFormTest(params.databaseUsername)) {
-    fieldErrors.databaseUsername = {
+    fieldErrors.push({
+      errorKey: 'databaseUsername',
       errorMsg: 'You need to supply a Database username'
-    };
+    });
   }
 
   if (!isValidFormTest(params.databasePassword)) {
-    fieldErrors.databasePassword = {
+    fieldErrors.push({
+      errorKey: 'databasePassword',
       errorMsg: 'You need to supply a Database password'
-    };
+    });
   }
 
   if (!isValidFormTest(params.sitemapUrl)) {
-    fieldErrors.sitemapUrl = {
+    fieldErrors.push({
+      errorKey: 'sitemapUrl',
       errorMsg: 'You need to supply a sitemap URL'
-    };
+    });
   }
 
   return fieldErrors;
