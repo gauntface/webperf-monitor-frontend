@@ -1,0 +1,42 @@
+<section class="main-container">
+  <p>{{message}}</p>
+
+  <form method="post" action="/settings/submit">
+    <p>
+      <label>Database Hostname (Required)</label><br />
+      <input name="databaseHostname" value="{{this.databaseHostname}}" placeholder="Databases Hostname"/>
+    </p>
+
+    <p>
+      <label>Database Port Number</label><br />
+      <input name="databasePortNum" value="{{this.databasePortNum}}" placeholder="Database Port Number" />
+    </p>
+
+    <p>
+      <label>Database Username (Required)</label><br />
+      <input name="databaseUsername" value="{{this.databaseUsername}}" placeholder="Database Username" />
+    </p>
+
+    <p>
+      <label>Database Password (Required)</label><br />
+      <input name="databasePassword" value="{{this.databasePassword}}" placeholder="Database Password" />
+    </p>
+
+    <p>
+      <label>Database Name</label><br />
+      <input name="databaseName" value="{{this.databaseName}}" placeholder="Database Name" />
+    </p>
+
+    <p>
+      <label>Database Sitemap URL (Required)</label><br />
+      <input name="sitemapUrl" value="{{this.sitemapUrl}}" placeholder="Your Sitemap" />
+    </p>
+
+    <p>
+      <label>Web Page Test API Key</label><br />
+      <input name="webpagetestAPIKey" value="{{this.webpagetestAPIKey}}" placeholder="Web Page Test API Key" />
+    </p>
+
+    <p><button type="submit" class="button--primary">Save</button></p>
+  </form>
+</section>
