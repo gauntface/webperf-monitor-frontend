@@ -1,4 +1,5 @@
-var fs = require('fs');
+'use strict';
+
 var pkg = require( './package.json' );
 
 var argv = require('minimist')(process.argv.slice(2));
@@ -23,15 +24,13 @@ if(argv.h || argv.help) {
     return;
 }
 
-var configFilePath = './config/config.js'
-var customConfigPathFile = './.config/';
-var customConfigFileName = 'settings';
+var configFilePath = './config/config.js';
 
 if(argv.c || argv.config) {
     configFilePath = argv.c || argv.config;
 }
 
-if(configFilePath.indexOf('.') == 0) {
+if(configFilePath.indexOf('.') === 0) {
 	configFilePath = configFilePath.substring(1);
 	configFilePath = __dirname + configFilePath;
 }
