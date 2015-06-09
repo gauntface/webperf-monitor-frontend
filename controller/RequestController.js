@@ -12,9 +12,8 @@ var fs = require('fs');
 exports.getIndexRequest = function(req, res) {
   var config;
   try {
-    config = require(configFilePath);
+    config = require('../' + GLOBAL.configFile);
   } catch (exception) {}
-
   if (!config) {
     exports.getSettingsRequest(req, res, true);
     return;
@@ -22,44 +21,53 @@ exports.getIndexRequest = function(req, res) {
 
   RunsModel.getLatestCompleteRun()
     .then(function(result) {
-      //jscs:disable
+      // jscs:disable
       var runId = result['run_id'];
-      //jscs:enable
-      getTopResultsForRun(runId, 10, function(err, topPagesResults) {
+      // jscs:enable
+      getTopResultsForRun(runId, 3, function(err, topPagesResults) {
         if (err) {
           console.error(err);
-          res.send(500, 'Something broke! ' + err);
+          res.status(500).send('Something broke! ' + err);
           return;
         }
 
-        getWorstResultsForRun(runId, 10, function(err, worstPagesResults) {
+        getWorstResultsForRun(runId, 3, function(err, worstPagesResults) {
           if (err) {
             console.error(err);
-            res.send(500, 'Something broke! ' + err);
+            res.status(500).send('Something broke! ' + err);
             return;
           }
 
           getPreviousScoreAverages(function(err, scoreAverages) {
             if (err) {
               console.error(err);
-              res.send(500, 'Something broke! ' + err);
+              res.status(500).send('Something broke! ' + err);
               return;
             }
 
-            res.render('home', {
-              cssfile: 'styles/home.css',
-              topSites: topPagesResults,
-              worstSites: worstPagesResults,
-              scoreAverages: scoreAverages
-            });
-            //res.send(html);
+            getBiggestPagesByTotalResources(runId, 3,
+                function(err, biggestTotalResourcePages) {
+                  if (err) {
+                    console.error(err);
+                    res.status(500).send('Something broke! ' + err);
+                    return;
+                  }
+
+                  res.render('home', {
+                    cssfile: 'styles/home.css',
+                    topSites: topPagesResults,
+                    worstSites: worstPagesResults,
+                    scoreAverages: scoreAverages,
+                    biggestTotalResourcePages: biggestTotalResourcePages
+                  });
+                });
           });
         });
       });
     })
     .catch(function(err) {
       console.error(err);
-      res.send(500, 'Something broke! ' + err);
+      res.status(500).send('Something broke! ' + err);
     });
 };
 
@@ -193,6 +201,21 @@ function getPreviousScoreAverages(cb) {
   }
   var numberOfDays = 30 * 3;
   RunsModel.getPreviousScoreAverages(numberOfDays)
+    .then(function(result) {
+      cb(null, result);
+    })
+    .catch(function(err) {
+      cb(err);
+    });
+}
+
+function getBiggestPagesByTotalResources(runId, numOfResults, cb) {
+  if (!cb) {
+    return;
+  }
+
+  numOfResults = numOfResults || 10;
+  RunsModel.getBiggestPagesByTotalResources(runId, numOfResults)
     .then(function(result) {
       cb(null, result);
     })

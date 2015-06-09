@@ -1,25 +1,117 @@
-@import "./../styleguide/styles/_colors";
-@import "./../styleguide/styles/_dimens";
-@import "./../styleguide/styles/_mediaqueries";
-@import "./../styleguide/styles/_typography";
-@import "./../styleguide/styles/_grid";
-@import "./../styleguide/styles/_base";
-@import "./../styleguide/styles/_table";
-@import "./../styleguide/styles/_helper";
+/**
+This is all MDL
+**/
 
-@import "./../styleguide/styles/modules/_containers";
-
-@import "./../styleguide/styles/modules/_footer";
-
-@include mq-small-only {
-	table.url-score-table td {
-		word-break: break-all;
-	}
+.avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 24px;
 }
 
-@include mq-medium {
-	table.url-score-table td {
-		height: 160px;
-		word-break: break-all;
-	}
+.mdl-layout__header {
+  padding: 0 16px;
+  overflow: visible;
+}
+.mdl-layout__drawer {
+  overflow: visible;
+}
+.mdl-layout__drawer .avatar {
+  margin-bottom: 16px;
+}
+.mdl-layout__drawer > header {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+}
+.mdl-layout__drawer > header > div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.mdl-layout__drawer nav a {
+  color: inherit;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.mdl-layout__drawer nav a .material-icons {
+  font-size: 1.5em;
+  margin-right: 16px;
+}
+.mdl-layout__drawer .mdl-navigation {
+  flex-grow: 1;
+}
+
+.mdl-layout__content {
+  padding: 0;
+  display: flex;
+}
+.charts {
+  align-items: center;
+}
+.charts svg:nth-child(1) {
+  fill: #ACEC00;
+}
+.charts svg:nth-child(2) {
+  fill: #00BBD6;
+}
+.charts svg:nth-child(3) {
+  fill: #BA65C9;
+}
+.charts svg:nth-child(4) {
+  fill: #EF3C79;
+}
+.graphs {
+  padding: 32px;
+}
+.graphs img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 80px;
+}
+.graph {
+  width:100%;
+  height: auto;
+}
+.graph:nth-child(1) {
+  fill: #00b9d8;
+}
+.graph:nth-child(2) {
+  fill: #d9006e;
+}
+
+.cards {
+  padding: 0;
+  margin: 0;
+}
+.cards .mdl-card {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+.cards .mdl-card__title {
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+  flex-grow: 1;
+}
+.cards .mdl-card__supporting-text {
+  height: auto;
+  flex-grow: 0;
+}
+.cards .mdl-card__title h2 {
+  height: auto;
+  align-self: flex-end;
+}
+.cards ul {
+  padding: 0;
+}
+.cards h3 {
+  font-size: 1em;
+}
+.cards .dog {
+  height: 200px;
+  background-image: url('images/dog.png');
+  background-position: 90% 100%;
+  background-repeat: no-repeat;
 }

@@ -1,55 +1,151 @@
+<!-- Average of scores over time -->
+<h3>Averages</h3>
+
+<div class="charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid mdl-grid">
+	<svg id="visualisation"></svg>
+
+	<svg width="500px" height="325px" viewBox="0 0 500 250" preserveAspectRatio="none" class="graph">
+		<use xlink:href="#chart"/>
+	</svg>
+</div>
+
+<!-- 3 Best Pages -->
+<h3>Best for PSI Speed</h3>
+
+<div class="mdl-cell mdl-cell--12-col mdl-grid mdl-grid">
+	{{#each topSites}}
+	<div class="cards mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-grid">
+		<div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--12-col-desktop">
+			<div class="mdl-card__title mdl-color--teal-300 dog">
+				<h2 class="mdl-card__title-text">{{this.speed_score}}</h2>
+			</div>
+			<div class="mdl-card__supporting-text mdl-color-text--grey-600">
+				{{this.url}}
+			</div>
+			<div class="mdl-card__actions ">
+				<a href="https://developers.google.com/speed/pagespeed/insights/?url={{this.url}}"  target="_blank" class="mdl-button">Read More</a>
+			</div>
+		</div>
+	</div>
+	{{/each}}
+</div>
+
+<!-- 3 Worst Pages -->
+<h3>PageSpeed Insights - Worst Pages</h3>
+
+<div class="mdl-cell mdl-cell--12-col mdl-grid mdl-grid">
+	{{#each worstSites}}
+	<div class="cards mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-grid">
+		<div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--12-col-desktop">
+			<div class="mdl-card__title mdl-color--teal-300 dog">
+				<h2 class="mdl-card__title-text">{{this.speed_score}}</h2>
+			</div>
+			<div class="mdl-card__supporting-text mdl-color-text--grey-600">
+				{{this.url}}
+			</div>
+			<div class="mdl-card__actions ">
+				<a href="https://developers.google.com/speed/pagespeed/insights/?url={{this.url}}"  target="_blank" class="mdl-button">Read More</a>
+			</div>
+		</div>
+	</div>
+	{{/each}}
+</div>
+
+<!-- 3 Biggest Pages -->
+<h3>Biggest Pages</h3>
+
+<div class="mdl-cell mdl-cell--12-col mdl-grid mdl-grid">
+	{{#each biggestTotalResourcePages}}
+	<div class="cards mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-grid">
+		<div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--12-col-desktop">
+			<div class="mdl-card__title mdl-color--teal-300 dog">
+				<h2 class="mdl-card__title-text">{{this.total_request_bytes}}</h2>
+			</div>
+			<div class="mdl-card__supporting-text mdl-color-text--grey-600">
+				{{this.url}}
+			</div>
+			<div class="mdl-card__actions ">
+				<a href="{{this.url}}" target="_blank" class="mdl-button">Read More</a>
+			</div>
+		</div>
+	</div>
+	{{/each}}
+</div>
+
+
+<div class="charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid mdl-grid">
+	<svg width="200px" height="200px" viewBox="0 0 1 1" class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop">
+		<use xlink:href="#piechart" mask="url(#piemask)" />
+		<text x="0.5" y="0.5" font-family="Roboto" font-size="0.3" fill="#888" text-anchor="middle" alignment-baseline="middle">82%</text>
+	</svg>
+	<svg width="200px" height="200px" viewBox="0 0 1 1" class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop">
+		<use xlink:href="#piechart" mask="url(#piemask)" />
+		<text x="0.5" y="0.5" font-family="Roboto" font-size="0.3" fill="#888" text-anchor="middle" alignment-baseline="middle">82%</text>
+	</svg>
+	<svg width="200px" height="200px" viewBox="0 0 1 1" class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop">
+		<use xlink:href="#piechart" mask="url(#piemask)" />
+		<text x="0.5" y="0.5" font-family="Roboto" font-size="0.3" fill="#888" text-anchor="middle" alignment-baseline="middle">82%</text>
+	</svg>
+	<svg width="200px" height="200px" viewBox="0 0 1 1" class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop">
+		<use xlink:href="#piechart" mask="url(#piemask)" />
+		<text x="0.5" y="0.5" font-family="Roboto" font-size="0.3" fill="#888" text-anchor="middle" alignment-baseline="middle">82%</text>
+	</svg>
+</div>
+
+
+<div class="graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--8-col">
+	<svg width="500px" height="325px" viewBox="0 0 500 250" preserveAspectRatio="none" class="graph">
+		<use xlink:href="#chart"/>
+	</svg>
+	<svg width="500px" height="325px" viewBox="0 0 500 250" preserveAspectRatio="none" class="graph">
+		<use xlink:href="#chart"/>
+	</svg>
+</div>
+
+<div class="cards mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-grid">
+	<div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--12-col-desktop">
+		<div class="mdl-card__title mdl-color--teal-300 dog">
+			<h2 class="mdl-card__title-text">Updates</h2>
+		</div>
+		<div class="mdl-card__supporting-text mdl-color-text--grey-600">
+			Non dolore elit adipisicing ea reprehenderit consectetur culpa.
+		</div>
+		<div class="mdl-card__actions ">
+			<a href="#" class="mdl-button">Read More</a>
+		</div>
+	</div>
+	<div class="mdl-card mdl-color--deep-purple-500 mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--12-col-desktop">
+		<div class="mdl-card__supporting-text mdl-color-text--blue-grey-50">
+			<h3>View options</h3>
+			<ul>
+				<label for="chkbox1" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+					<input type="checkbox" id="chkbox1" class="mdl-checkbox__input" />
+					<span class="mdl-checkbox__label">Click per object</span>
+				</label>
+				<label for="chkbox2" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+					<input type="checkbox" id="chkbox2" class="mdl-checkbox__input" />
+					<span class="mdl-checkbox__label">Views per object</span>
+				</label>
+				<label for="chkbox3" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+					<input type="checkbox" id="chkbox3" class="mdl-checkbox__input" />
+					<span class="mdl-checkbox__label">Objects selected</span>
+				</label>
+				<label for="chkbox4" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+					<input type="checkbox" id="chkbox4" class="mdl-checkbox__input" />
+					<span class="mdl-checkbox__label">Objects viewed</span>
+				</label>
+			</ul>
+		</div>
+		<div class="mdl-card__actions">
+			<a href="#" class=" mdl-color-text--blue-grey-50">Change location</a>
+			<div class="mdl-layout-spacer"></div>
+			<i class="material-icons">location_on</i>
+		</div>
+	</div>
+</div>
+
+
 <section class="container">
-	<div class="g--half">
-		<h2>Top Pages</h2>
-
-		<div class="table-wrap">
-			<table class="table-2 url-score-table">
-				<thead>
-					<tr>
-						<th>URL</th>
-						<th>Score</th>
-					</tr>
-				</thead>
-
-				<tbody>
-				{{#each topSites}}
-				<tr>
-			    	<td data-th="URL">{{this.url}}</td>
-			    	<td data-th="Score">{{this.score}}</td>
-			    </tr>
-				{{/each}}
-				</tbody>
-
-			</table>
-		</div>
-	</div>
-
-	<div class="g--half g--last">
-		<h2>Worst Pages</h2>
-
-		<div class="table-wrap">
-			<table class="table-2 url-score-table">
-				<thead>
-					<tr>
-						<th>URL</th>
-						<th>Score</th>
-					</tr>
-				</thead>
-
-				<tbody>
-				{{#each worstSites}}
-				<tr>
-			    	<td data-th="URL">{{this.url}} </td>
-			    	<td data-th="Score">{{this.score}}</td>
-			    </tr>
-				{{/each}}
-				</tbody>
-
-			</table>
-		</div>
-	</div>
-
-	<div class="clear"></div>
 
 	<h2>Run Score Averages</h2>
 

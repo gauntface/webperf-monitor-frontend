@@ -1,7 +1,7 @@
 'use strict';
 
 function startServer () {
-  var configFilePath = './config/config.js';
+  var configFilePath = 'config/config.js';
   var express = require('express');
   var exphbs  = require('express3-handlebars');
   var RequestController = require('./controller/RequestController.js');
